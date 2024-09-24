@@ -1,0 +1,83 @@
+2019_12 retweet_url_num:1659179	    quoted_url_num:168357	other_num:0
+2020_01 retweet_url_num:1585078	    quoted_url_num:168272	other_num:0
+2020_02 retweet_url_num:1709753	    quoted_url_num:157675	other_num:0
+2020_03 retweet_url_num:1733313	    quoted_url_num:192929	other_num:0
+2020_04 retweet_url_num:3488262	    quoted_url_num:408605	other_num:0
+2020_05 retweet_url_num:1566125	    quoted_url_num:158363	other_num:0
+2020_06 retweet_url_num:1691056	    quoted_url_num:191114	other_num:0
+2020_07 retweet_url_num:2478206	    quoted_url_num:276432	other_num:0
+2020_08 retweet_url_num:3643768	    quoted_url_num:396343	other_num:0
+2020_09 retweet_url_num:7177475	    quoted_url_num:729598	other_num:0
+2020_10 retweet_url_num:10000933	quoted_url_num:1180715	other_num:0
+2020_11 retweet_url_num:8046776	    quoted_url_num:1446848	other_num:0
+2020_12 retweet_url_num:7611143	    quoted_url_num:1254259	other_num:0
+2021_01 retweet_url_num:11468910	quoted_url_num:1527407	other_num:0
+2021_02 retweet_url_num:8935045	    quoted_url_num:1190728	other_num:0
+
+2024-08-29 13:38:02,971 - INFO - retweet_url_num:1659179	quoted_url_num:168357	other_num:0 	every_mouth_retweet_url_have_soure_num:978078		every_mouth_quoted_url_have_num:108340
+2024-08-29 13:38:38,741 - INFO - retweet_url_num:1585078	quoted_url_num:168272	other_num:0 	every_mouth_retweet_url_have_soure_num:846931		every_mouth_quoted_url_have_num:101246
+2024-08-29 13:39:16,979 - INFO - retweet_url_num:1709753	quoted_url_num:157675	other_num:0 	every_mouth_retweet_url_have_soure_num:876704		every_mouth_quoted_url_have_num:93800
+2024-08-29 13:39:58,117 - INFO - retweet_url_num:1733313	quoted_url_num:192929	other_num:0 	every_mouth_retweet_url_have_soure_num:923171		every_mouth_quoted_url_have_num:125862
+2024-08-29 13:41:23,340 - INFO - retweet_url_num:3488262	quoted_url_num:408605	other_num:0 	every_mouth_retweet_url_have_soure_num:2100996		every_mouth_quoted_url_have_num:258067
+2024-08-29 13:42:00,178 - INFO - retweet_url_num:1566125	quoted_url_num:158363	other_num:0 	every_mouth_retweet_url_have_soure_num:953544		every_mouth_quoted_url_have_num:99225
+2024-08-29 13:43:21,061 - INFO - retweet_url_num:1691056	quoted_url_num:191114	other_num:0 	every_mouth_retweet_url_have_soure_num:998331		every_mouth_quoted_url_have_num:116497
+2024-08-29 13:45:04,078 - INFO - retweet_url_num:2478206	quoted_url_num:276432	other_num:0 	every_mouth_retweet_url_have_soure_num:1380906		every_mouth_quoted_url_have_num:166087
+2024-08-29 13:46:34,980 - INFO - retweet_url_num:3643768	quoted_url_num:396343	other_num:0 	every_mouth_retweet_url_have_soure_num:2026522		every_mouth_quoted_url_have_num:230686
+2024-08-29 13:49:27,693 - INFO - retweet_url_num:7177475	quoted_url_num:729598	other_num:0 	every_mouth_retweet_url_have_soure_num:4436555		every_mouth_quoted_url_have_num:469834
+2024-08-29 13:53:33,143 - INFO - retweet_url_num:10000933	quoted_url_num:1180715	other_num:0 	every_mouth_retweet_url_have_soure_num:5944326		every_mouth_quoted_url_have_num:737115
+2024-08-29 13:57:01,739 - INFO - retweet_url_num:8046776	quoted_url_num:1446848	other_num:0 	every_mouth_retweet_url_have_soure_num:4670674		every_mouth_quoted_url_have_num:872157
+2024-08-29 14:00:35,909 - INFO - retweet_url_num:7611143	quoted_url_num:1254259	other_num:0 	every_mouth_retweet_url_have_soure_num:4876696		every_mouth_quoted_url_have_num:852274
+2024-08-29 14:05:25,346 - INFO - retweet_url_num:11468910	quoted_url_num:1527407	other_num:0 	every_mouth_retweet_url_have_soure_num:7391331		every_mouth_quoted_url_have_num:986294
+2024-08-29 14:10:18,257 - INFO - retweet_url_num:8935045	quoted_url_num:1190728	other_num:0 	every_mouth_retweet_url_have_soure_num:5890780		every_mouth_quoted_url_have_num:772630
+
+
+2024-08-29 15:10:04,490 - INFO - retweet_url_num:1659179	quoted_url_num:168357	other_num:0 	every_mouth_retweet_url_have_soure_num:978078		every_mouth_quoted_url_have_num:108340
+2024-08-29 15:10:40,140 - INFO - retweet_url_num:1585078	quoted_url_num:168272	other_num:0 	every_mouth_retweet_url_have_soure_num:846931		every_mouth_quoted_url_have_num:101246
+2024-08-29 15:11:56,637 - INFO - retweet_url_num:1709753	quoted_url_num:157675	other_num:0 	every_mouth_retweet_url_have_soure_num:876704		every_mouth_quoted_url_have_num:93800
+2024-08-29 15:13:29,535 - INFO - retweet_url_num:1733313	quoted_url_num:192929	other_num:0 	every_mouth_retweet_url_have_soure_num:923171		every_mouth_quoted_url_have_num:125862
+2024-08-29 15:16:37,845 - INFO - retweet_url_num:3488262	quoted_url_num:408605	other_num:0 	every_mouth_retweet_url_have_soure_num:2100996		every_mouth_quoted_url_have_num:258067
+2024-08-29 15:17:21,782 - INFO - retweet_url_num:1566125	quoted_url_num:158363	other_num:0 	every_mouth_retweet_url_have_soure_num:953544		every_mouth_quoted_url_have_num:99225
+2024-08-29 15:18:00,971 - INFO - retweet_url_num:1691056	quoted_url_num:191114	other_num:0 	every_mouth_retweet_url_have_soure_num:998331		every_mouth_quoted_url_have_num:116497
+2024-08-29 15:18:59,342 - INFO - retweet_url_num:2478206	quoted_url_num:276432	other_num:0 	every_mouth_retweet_url_have_soure_num:1380906		every_mouth_quoted_url_have_num:166087
+2024-08-29 15:20:29,885 - INFO - retweet_url_num:3643768	quoted_url_num:396343	other_num:0 	every_mouth_retweet_url_have_soure_num:2026522		every_mouth_quoted_url_have_num:230686
+2024-08-29 15:23:11,092 - INFO - retweet_url_num:7177475	quoted_url_num:729598	other_num:0 	every_mouth_retweet_url_have_soure_num:4436555		every_mouth_quoted_url_have_num:469834
+2024-08-29 15:26:58,960 - INFO - retweet_url_num:10000933	quoted_url_num:1180715	other_num:0 	every_mouth_retweet_url_have_soure_num:5944326		every_mouth_quoted_url_have_num:737115
+2024-08-29 15:30:14,074 - INFO - retweet_url_num:8046776	quoted_url_num:1446848	other_num:0 	every_mouth_retweet_url_have_soure_num:4670674		every_mouth_quoted_url_have_num:872157
+2024-08-29 15:33:16,820 - INFO - retweet_url_num:7611143	quoted_url_num:1254259	other_num:0 	every_mouth_retweet_url_have_soure_num:4876696		every_mouth_quoted_url_have_num:852274
+2024-08-29 15:37:50,443 - INFO - retweet_url_num:11468910	quoted_url_num:1527407	other_num:0 	every_mouth_retweet_url_have_soure_num:7391331		every_mouth_quoted_url_have_num:986294
+2024-08-29 15:41:28,926 - INFO - retweet_url_num:8935045	quoted_url_num:1190728	other_num:0 	every_mouth_retweet_url_have_soure_num:5890780		every_mouth_quoted_url_have_num:772630
+
+
+2024-08-30 14:33:36,446 - INFO - retweet_url_num:1659179	quoted_url_num:168357	other_num:0    every_mouth_retweet_url_have_soure_num:978078	  every_mouth_quoted_url_have_num:108341
+
+
+2024-08-30 16:20:13,658 - INFO - retweet_url_num:1659179	quoted_url_num:168357	other_num:0    every_mouth_retweet_url_have_soure_num:978078	  every_mouth_quoted_url_have_num:108341
+2024-08-30 16:21:48,333 - INFO - retweet_url_num:1585078	quoted_url_num:168272	other_num:0    every_mouth_retweet_url_have_soure_num:846931	  every_mouth_quoted_url_have_num:101247
+2024-08-30 16:23:17,289 - INFO - retweet_url_num:1709753	quoted_url_num:157675	other_num:0    every_mouth_retweet_url_have_soure_num:876714	  every_mouth_quoted_url_have_num:93800
+2024-08-30 16:24:49,692 - INFO - retweet_url_num:1733313	quoted_url_num:192929	other_num:0    every_mouth_retweet_url_have_soure_num:923172	  every_mouth_quoted_url_have_num:125863
+2024-08-30 16:27:57,536 - INFO - retweet_url_num:3488262	quoted_url_num:408605	other_num:0    every_mouth_retweet_url_have_soure_num:2100996	  every_mouth_quoted_url_have_num:258067
+2024-08-30 16:29:21,201 - INFO - retweet_url_num:1566125	quoted_url_num:158363	other_num:0    every_mouth_retweet_url_have_soure_num:953545	  every_mouth_quoted_url_have_num:99226
+2024-08-30 16:30:54,192 - INFO - retweet_url_num:1691056	quoted_url_num:191114	other_num:0    every_mouth_retweet_url_have_soure_num:998331	  every_mouth_quoted_url_have_num:116499
+2024-08-30 16:33:07,180 - INFO - retweet_url_num:2478206	quoted_url_num:276432	other_num:0    every_mouth_retweet_url_have_soure_num:1380906	  every_mouth_quoted_url_have_num:166087
+2024-08-30 16:36:26,000 - INFO - retweet_url_num:3643768	quoted_url_num:396343	other_num:0    every_mouth_retweet_url_have_soure_num:2026522	  every_mouth_quoted_url_have_num:230687
+2024-08-30 16:42:50,229 - INFO - retweet_url_num:7177475	quoted_url_num:729598	other_num:0    every_mouth_retweet_url_have_soure_num:4436864	  every_mouth_quoted_url_have_num:469850
+2024-08-30 16:51:50,195 - INFO - retweet_url_num:10000933	quoted_url_num:1180715	other_num:0    every_mouth_retweet_url_have_soure_num:5945321	  every_mouth_quoted_url_have_num:737153
+2024-08-30 16:59:30,664 - INFO - retweet_url_num:8046776	quoted_url_num:1446848	other_num:0    every_mouth_retweet_url_have_soure_num:4680262	  every_mouth_quoted_url_have_num:873051
+2024-08-30 17:06:42,204 - INFO - retweet_url_num:7611143	quoted_url_num:1254259	other_num:0    every_mouth_retweet_url_have_soure_num:4880524	  every_mouth_quoted_url_have_num:852546
+2024-08-30 17:17:17,032 - INFO - retweet_url_num:11468910	quoted_url_num:1527407	other_num:0    every_mouth_retweet_url_have_soure_num:7395954	  every_mouth_quoted_url_have_num:986471
+2024-08-30 17:25:32,122 - INFO - retweet_url_num:8935045	quoted_url_num:1190728	other_num:0    every_mouth_retweet_url_have_soure_num:5897841	  every_mouth_quoted_url_have_num:772922
+2024-09-12 17:09:06,224 - INFO - retweet_url_num:1659179	quoted_url_num:168357	other_num:0every_mouth_retweet_url_have_soure_num:978078	every_mouth_quoted_url_have_num:108341
+2024-09-12 17:09:42,672 - INFO - retweet_url_num:1585078	quoted_url_num:168272	other_num:0every_mouth_retweet_url_have_soure_num:846931	every_mouth_quoted_url_have_num:101247
+2024-09-12 17:10:41,275 - INFO - retweet_url_num:1709753	quoted_url_num:157675	other_num:0every_mouth_retweet_url_have_soure_num:876714	every_mouth_quoted_url_have_num:93800
+2024-09-12 17:11:20,403 - INFO - retweet_url_num:1733313	quoted_url_num:192929	other_num:0every_mouth_retweet_url_have_soure_num:923172	every_mouth_quoted_url_have_num:125863
+2024-09-12 17:12:39,708 - INFO - retweet_url_num:3488262	quoted_url_num:408605	other_num:0every_mouth_retweet_url_have_soure_num:2100996	every_mouth_quoted_url_have_num:258067
+2024-09-12 17:13:13,166 - INFO - retweet_url_num:1566125	quoted_url_num:158363	other_num:0every_mouth_retweet_url_have_soure_num:953545	every_mouth_quoted_url_have_num:99226
+2024-09-12 17:13:51,033 - INFO - retweet_url_num:1691056	quoted_url_num:191114	other_num:0every_mouth_retweet_url_have_soure_num:998331	every_mouth_quoted_url_have_num:116499
+2024-09-12 17:14:43,282 - INFO - retweet_url_num:2478206	quoted_url_num:276432	other_num:0every_mouth_retweet_url_have_soure_num:1380906	every_mouth_quoted_url_have_num:166087
+2024-09-12 17:16:05,211 - INFO - retweet_url_num:3643768	quoted_url_num:396343	other_num:0every_mouth_retweet_url_have_soure_num:2026522	every_mouth_quoted_url_have_num:230687
+2024-09-12 17:18:41,736 - INFO - retweet_url_num:7177475	quoted_url_num:729598	other_num:0every_mouth_retweet_url_have_soure_num:4436864	every_mouth_quoted_url_have_num:469850
+2024-09-12 17:22:23,584 - INFO - retweet_url_num:10000933	quoted_url_num:1180715	other_num:0every_mouth_retweet_url_have_soure_num:5945321	every_mouth_quoted_url_have_num:737153
+2024-09-12 17:25:32,209 - INFO - retweet_url_num:8046776	quoted_url_num:1446848	other_num:0every_mouth_retweet_url_have_soure_num:4680262	every_mouth_quoted_url_have_num:873051
+2024-09-12 17:28:28,442 - INFO - retweet_url_num:7611143	quoted_url_num:1254259	other_num:0every_mouth_retweet_url_have_soure_num:4880524	every_mouth_quoted_url_have_num:852546
+2024-09-12 17:32:49,678 - INFO - retweet_url_num:11468910	quoted_url_num:1527407	other_num:0every_mouth_retweet_url_have_soure_num:7395954	every_mouth_quoted_url_have_num:986471
+2024-09-12 17:36:12,759 - INFO - retweet_url_num:8935045	quoted_url_num:1190728	other_num:0every_mouth_retweet_url_have_soure_num:5897841	every_mouth_quoted_url_have_num:772922

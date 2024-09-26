@@ -8,7 +8,7 @@ def rated_users_counts():
     # folder_path = r'F:\Experimental Results\Average_Bias_Rating\politician_average_rating\external_url-rating'
     # folder_path = r'F:\Experimental Results\Average_Bias_Rating\media_average_rating\external_url-rating'
     # folder_path = r'F:\Experimental Results\Average_Bias_Rating\media_average_rating\multiple_url-rating'
-    folder_path = r'F:\Experimental Results\Average_Bias_Rating\politician_average_rating\external_url-rating\monthly_users_bias'
+    folder_path = r'F:\Intermediate Results\Simplyfied Forwarding relationship\Simplyfied Forwarding relationship_Media'
 
     # 创建一个空字典来存储文件名和对应的行数
     file_row_counts = {}
@@ -133,8 +133,39 @@ def all_output_users_count():
         print(f'{month}里的用户数量有： ',unique_user_count)
 
 
+
+
+# 帮我统计一下F:\Experimental Results\Average_Bias_Rating\media_average_rating\total_url-rating\user_bias_scores_by_month目录下的所有csv文件的每个csv文件的appearance_count列的值之和，给我每个csv一个appearance_count列的总数
+def 文件夹下每个csv文件的某列之和():
+    # 指定目录路径
+    directory = r'F:\Experimental Results\Average_Bias_Rating\media_average_rating\total_url-rating\user_bias_scores_by_month'
+
+    # 存储每个文件的 appearance_count 总数
+    results = {}
+
+    # 遍历目录下的所有文件
+    for filename in os.listdir(directory):
+        if filename.endswith('.csv'):
+            file_path = os.path.join(directory, filename)
+            # 读取 CSV 文件
+            df = pd.read_csv(file_path)
+
+            # 确保 appearance_count 列存在
+            if 'appearance_count' in df.columns:
+                total_count = df['appearance_count'].sum()
+                results[filename] = total_count
+            else:
+                results[filename] = 'appearance_count 列不存在'
+
+    # 输出结果
+    for file, total in results.items():
+        # print(f"{file}\t{total}")
+        print(f"{total}")
+
+
 if __name__ == '__main__':
-    # rated_users_counts()   # 统计单个文件夹里的文件行数
-    统计一个文件夹下所有csv的某列数据之和()
+    rated_users_counts()   # 统计单个文件夹里的文件行数
+    # 统计一个文件夹下所有csv的某列数据之和()
     # count_csv_rows_in_months()
     # all_output_users_count()
+    # 文件夹下每个csv文件的某列之和()

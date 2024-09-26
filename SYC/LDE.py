@@ -26,11 +26,10 @@ def matrixOptimization(matrix, benchmark):
     row_sums = np.sum(matrix, axis=1)
     # 标记哪些行被删除
     rows_to_keep = row_sums > benchmark
+    print(rows_to_keep)
     deleted_rows = np.where(~rows_to_keep)[0]  # 记录被删除的行
-
     # 删除行和小于 benchmark 的行
     matrix = matrix[rows_to_keep, :]
-
     # 计算每一列的和
     col_sums = np.sum(matrix, axis=0)
     # 标记哪些列被删除
@@ -156,20 +155,12 @@ def perform_svd(S):
 
     # Step 4: 计算奇异值矩阵 Sigma
     sigma = np.sqrt(eigenvalues)
-    Sigma = np.diag(sigma)
 
-    # Step 5: 计算 U 矩阵
-    # U = S * V * Sigma_inv
-    # 先计算 Sigma 的逆，避免除以零
-    Sigma_inv = np.zeros_like(Sigma)
-    for i in range(len(sigma)):
-        if sigma[i] != 0:
-            Sigma_inv[i, i] = 1 / sigma[i]
+    # Step 5: 计算 U 矩阵第一列
 
-    # 计算 U
-    U = np.dot(S, np.dot(V, Sigma_inv))
-
-    return U, Sigma, V
+    Sigma_inv = np.diag(1 / sigma)
+    U0 = np.dot(S, V[:, 0].reshape(-1, 1)) * Sigma_inv[0, 0]
+    return U0
 
 
 
@@ -388,6 +379,7 @@ def calculate_positions(filepath):
     A = create_adjacency_matrix(filepath)
     print(A.shape)
     A, deleted_rows, deleted_cols = matrixOptimization(A, 1)
+
     print(A.shape)
 
     P = normalize_matrix(A)
@@ -403,25 +395,29 @@ def calculate_positions(filepath):
     num_zero_rows, num_zero_columns = count_zero_rows_and_columns(S)
     print(f'S共有{num_zero_rows}个全0行及{num_zero_columns}个全0列')
 
-    U0, sigma, V = perform_svd(S)
+    U0 = perform_svd(S)
 
     print('------------------------------------------------------')
     print('U0:',U0)
     print(U0.shape)
     print('------------------------------------------------------')
-    print('sigma:', sigma)
-    print(sigma.shape)
 
-    print('------------------------------------------------------')
-    print('V:', V)
-    print(V.shape)
-
-    if U0[0][0] > 0:
+    if U0[0] > 0:
         U0 = -U0
     r = np.sum(P, axis=1)
-    print('r:', r)
+    print("r0:",r)
+    print(r.shape)
+    #log_r = np.log(r )
+    #log_U0 = np.log(np.abs(U0))  # 对U0取绝对值，避免对负数取对数
+    print("sqrt(r)",np.sqrt(r))
+    #user_positions = np.exp(log_U0 - 0.5 * log_r)
+    #user_positions = U0 / np.sqrt(r)
     user_positions = infer_user_positions(U0, r)
     print("user_positions:",user_positions)
+    print(user_positions.shape)
+    user_positions_standardized = user_positions
+    print("user_positions_standardized:", user_positions_standardized)
+    print(user_positions_standardized.shape)
     influencer_positions = infer_influencer_positions(A, user_positions)
 
     # print(f'奇异值分解结果:\n{U0}\n{sigma}\n{V}')
@@ -464,8 +460,8 @@ def save_scores_to_csv(user_positions, influencer_positions, output_user_csv, ou
 
 
 def main():
-    directory = r'F:\Intermediate Results\Simplyfied Forwarding relationship\Simplyfied Forwarding relationship_Politician\twitter_url'
-    for i in range(2019, 2022):
+    directory = rf'F:\Intermediate Results\Simplyfied Forwarding relationship\Simplyfied Forwarding relationship_Politician\twitter_url'
+    for i in range(2020, 2022):
         year = str(i)
         for j in range(1, 13):
             if j < 12 and i == 2019:
@@ -479,10 +475,15 @@ def main():
             print(filepath)
             # debug(filepath)
             user_positions, influencer_positions = calculate_positions(filepath)
-            graph_user_position(user_positions, 'Bias', 'Score', 'number', rf"F:\Experimental Results\Matrix Decomposition Results\politician_results\twitter_url_politicians_and_users_bias_results_graph\{filename.split('.')[0]}_user.png")
-            graph_influencer_position(influencer_positions, 'Bias', 'Score', 'number', rf"F:\Experimental Results\Matrix Decomposition Results\politician_results\twitter_url_politicians_and_users_bias_results_graph\{filename.split('.')[0]}_influencer.png")
-            save_scores_to_csv(user_positions, influencer_positions, rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\twitter_url\{filename.split('.')[0]}_user.csv", rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\twitter_url\{filename.split('.')[0]}_influencer.csv")
-            # return
+            graph_user_position(user_positions, 'Bias', 'Score', 'number',
+                                rf"F:\Experimental Results\Matrix Decomposition Results\politician_results\twitter_url_politicians_and_users_bias_results_graph\{filename.split('.')[0]}_user.png")
+            graph_influencer_position(influencer_positions, 'Bias', 'Score', 'number',
+                                      rf"F:\Experimental Results\Matrix Decomposition Results\politician_results\twitter_url_politicians_and_users_bias_results_graph\{filename.split('.')[0]}_influencer.png")
+            save_scores_to_csv(user_positions, influencer_positions,
+                               rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\twitter_url\{filename.split('.')[0]}_user.csv",
+                               rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\twitter_url\{filename.split('.')[0]}_influencer.csv")
+
+
 
 
 if __name__ == "__main__":

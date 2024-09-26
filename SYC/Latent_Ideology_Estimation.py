@@ -312,7 +312,7 @@ def save_scores_to_csv(user_positions, influencer_positions, output_user_csv, ou
 
 
 def main():
-    directory = r'F:/Intermediate Results/Simplyfied Forwarding relationship/Simplyfied Forwarding relationship_Politician/all_output'
+    directory = r'F:/Intermediate Results/Simplyfied Forwarding relationship/Simplyfied Forwarding relationship_Politician/without_url'
     for i in range(2019, 2022):
         year = str(i)
         for j in range(1, 13):
@@ -327,9 +327,9 @@ def main():
             print(filepath)
             # calculate_positions(filepath, year, month)
             user_positions, influencer_positions = calculate_positions(filepath)
-            graph_user_position(user_positions, 'Bias', 'Score', 'number', f"F:/Experimental Results/Matrix Decomposition Results/politician_results/all_data_politician_and_user_bias_results_graph/{filename.split('.')[0]}_user.png")
-            graph_influencer_position(influencer_positions, 'Bias', 'Score', 'number', f"F:/Experimental Results/Matrix Decomposition Results/politician_results/all_data_politician_and_user_bias_results_graph/{filename.split('.')[0]}_influencer.png")
-            save_scores_to_csv(user_positions, influencer_positions, f"F:/Intermediate Results/Matrix Decomposition Results/politician_results/all_data/{filename.split('.')[0]}_user.csv", f"F:/Intermediate Results/Matrix Decomposition Results/politician_results/all_data/{filename.split('.')[0]}_influencer.csv")
+            graph_user_position(user_positions, 'Bias', 'Score', 'number', f"F:/Experimental Results/Matrix Decomposition Results/politician_results/{filename.split('.')[0]}_user.png")
+            graph_influencer_position(influencer_positions, 'Bias', 'Score', 'number', f"F:/Experimental Results/Matrix Decomposition Results/politician_results/{filename.split('.')[0]}_influencer.png")
+            save_scores_to_csv(user_positions, influencer_positions, f"F:/Intermediate Results/Matrix Decomposition Results/politician_results/{filename.split('.')[0]}_user.csv", f"F:/Intermediate Results/Matrix Decomposition Results/politician_results/{filename.split('.')[0]}_influencer.csv")
             # return
 
 

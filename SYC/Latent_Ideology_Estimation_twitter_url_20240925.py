@@ -13,14 +13,6 @@ Influencers = []
 
 
 #矩阵优化——删除不活跃用户数据并标记删除的行和列
-# 代码的功能是优化一个矩阵，通过删除不活跃用户的数据，并标记被删除的行和列。具体步骤如下：
-# 计算行的和：计算矩阵每一行的总和。
-# 标记行：根据一个基准值（benchmark），标记出总和低于该值的行。
-# 删除行：删除不活跃的行，得到新的矩阵。
-# 计算列的和：对新矩阵计算每一列的总和。
-# 标记列：标记出和为零的列。
-# 删除列：删除这些和为零的列。
-# 最终返回优化后的矩阵，以及被删除的行和列的索引。
 def matrixOptimization(matrix, benchmark):
     # 计算每一行的和
     row_sums = np.sum(matrix, axis=1)
@@ -42,14 +34,25 @@ def matrixOptimization(matrix, benchmark):
     return matrix, deleted_rows, deleted_cols
 
 
-
 #统计用户转发情况。
 def forwardingCount(A):
     row_sums = np.sum(A, axis=1)
+
     # 统计相同行和出现的次数
     sum_counts = Counter(row_sums)
+
     print("矩阵的每一行的和：", row_sums)
     print("用户转发次数统计：", sum_counts)
+
+
+def check_singular_matrix(matrix):
+    condition_number = np.linalg.cond(matrix)
+    print(f"The condition number of the matrix is {condition_number}")
+
+    if condition_number > 1e10:
+        print("The matrix is likely to be singular.")
+    else:
+        print("The matrix is not singular.")
 
 
 # 读取一个月的转发数据，构成转发矩阵
@@ -123,7 +126,7 @@ def calculate_residuals(P):
     # S = np.linalg.inv(np.sqrt(D_r)) @ (P - rc) @ np.linalg.inv(np.sqrt(D_c))
     return S
 
-# 对矩阵 A 的每一行进行归一化处理
+
 def rowmul(r, A):
     matShape = A.shape
     mat = np.zeros(matShape, dtype=float)
@@ -148,53 +151,14 @@ def perform_svd(S):
 
     # Step 2: 对 S^T S 进行特征值分解
     eigenvalues, V = np.linalg.eig(STS)
-
-    # Step 3: 对特征值进行排序
-    idx = np.argsort(eigenvalues)[::-1]  # 降序排序
-    eigenvalues = eigenvalues[idx]
-    V = V[:, idx]
-
-    # Step 4: 计算奇异值矩阵 Sigma
-    sigma = np.sqrt(eigenvalues)
-    Sigma = np.diag(sigma)
-
-    # Step 5: 计算 U 矩阵
-    # U = S * V * Sigma_inv
-    # 先计算 Sigma 的逆，避免除以零
-    Sigma_inv = np.zeros_like(Sigma)
-    for i in range(len(sigma)):
-        if sigma[i] != 0:
-            Sigma_inv[i, i] = 1 / sigma[i]
-
-    # 计算 U
-    U = np.dot(S, np.dot(V, Sigma_inv))
-
-    return U, Sigma, V
-
-
-
-
-
-
-def perform_svd_错的(S):
-    # Step 1: 计算 S^T S
-    STS = np.dot(S.T, S)
-
-    # Step 2: 对 S^T S 进行特征值分解
-    eigenvalues, V = np.linalg.eig(STS)
     # print(V)
     # print(f'eigvalues:{eigenvalues}')
     idx = np.argsort(eigenvalues)[::-1]  # 降序排序
     eigenvalues = eigenvalues[idx]
-    print(f'eigvalues:{eigenvalues}')
+    # print(f'eigvalues:{eigenvalues}')
 
     # Step 3: 计算奇异值矩阵 Sigma
-    try:
-        sigma = np.sqrt(eigenvalues)
-    except RuntimeWarning:
-        print(f'eigvalues:{eigenvalues}')
-        return
-    print(f'sigma{sigma}')
+    sigma = np.sqrt(eigenvalues)
     Sigma = np.diag(sigma)
 
     # Step 4: 计算 U 的第一列
@@ -281,113 +245,11 @@ def count_zero_rows_and_columns(matrix):
     return num_zero_rows, num_zero_columns
 
 
-def dataDistributionCheck(A):
-    # 计算每一行和每一列的和
-    row_sums = np.sum(A, axis=1)  # 每一行的和（用户转发行为）
-    col_sums = np.sum(A, axis=0)  # 每一列的和（政客被转发次数）
-
-    # 创建数据框
-    row_sums_df = pd.DataFrame({'User num': range(len(row_sums)), 'Total_Retweets': row_sums})
-    col_sums_df = pd.DataFrame({'Influencer num': range(len(col_sums)), 'Total_Retweets': col_sums})
-
-    # 保存为CSV文件
-    # row_sums_df.to_csv('data/test/row_sums.csv', index=False)
-    # col_sums_df.to_csv('data/test/col_sums.csv', index=False)
-    # print("row_sums 和 col_sums 已保存为CSV文件")
-
-    # 绘制用户转发行为的分布图
-    plt.figure(figsize=(10, 6))
-    plt.hist(row_sums, bins=100, color='green', alpha=0.7)
-    plt.title('User Total Retweets Distribution')
-    plt.xlabel('Total Retweets per User')
-    plt.ylabel('Number of Users')
-    plt.show()
-
-    # 绘制政客被转发行为的分布图
-    plt.figure(figsize=(10, 6))
-    plt.hist(col_sums, bins=100, color='blue', alpha=0.7)
-    plt.title('Influencer Total Retweets Distribution')
-    plt.xlabel('Total Retweets per Influencer')
-    plt.ylabel('Number of Influencers')
-    plt.show()
-
-
-def userActivityCheck(A):
-    # 统计每个用户转发的政客数（每行非零值的个数）
-    user_activity = np.count_nonzero(A, axis=1)
-
-    # 统计每个政客被转发的用户数（每列非零值的个数）
-    influencer_activity = np.count_nonzero(A, axis=0)
-
-    # 绘制用户活跃度的分布
-    plt.figure(figsize=(10, 6))
-    plt.hist(user_activity, bins=100, color='green', alpha=0.7)
-    plt.title('User Activity Distribution')
-    plt.xlabel('Number of Influencers Each User Retweeted')
-    plt.ylabel('Number of Users')
-    plt.show()
-
-    # 绘制政客被转发次数的分布
-    plt.figure(figsize=(10, 6))
-    plt.hist(influencer_activity, bins=100, color='blue', alpha=0.7)
-    plt.title('Influencer Activity Distribution')
-    plt.xlabel('Number of Users Retweeting Each Influencer')
-    plt.ylabel('Number of Influencers')
-    plt.show()
-
-
-def check_singular_matrix(matrix):
-    condition_number = np.linalg.cond(matrix)
-    print(f"The condition number of the matrix is {condition_number}")
-
-    if condition_number > 1e10:
-        print("The matrix is likely to be singular.")
-    else:
-        print("The matrix is not singular.")
-
-
-def debug(filepath):
-    global deleted_rows, deleted_cols
-    A = create_adjacency_matrix(filepath)
-    print(A.shape)
-    A, deleted_rows, deleted_cols = matrixOptimization(A, 4)# 在此处修改需要筛选的转发次数
-    print(A.shape)
-    dataDistributionCheck(A)
-    userActivityCheck(A)
-    check_singular_matrix(A)
-    P = normalize_matrix(A)
-    num_zero_rows, num_zero_columns = count_zero_rows_and_columns(P)
-    print(type(P[1][1]))
-    print(f'P共有{num_zero_rows}个全0行及{num_zero_columns}个全0列')
-    S = calculate_residuals(P)
-    print('residuals calculate success')
-    print(S.shape)
-    check_matrix_validity(S)
-    print(type(S[1][1]))
-
-    num_zero_rows, num_zero_columns = count_zero_rows_and_columns(S)
-    print(f'S共有{num_zero_rows}个全0行及{num_zero_columns}个全0列')
-
-    U0, Sigma, V = perform_svd(S)
-
-    # 打印奇异值
-    print(f"奇异值的前几个值: {Sigma[:10]}")
-
-    # 绘制奇异值的分布图
-    plt.figure(figsize=(10, 6))
-    plt.plot(Sigma, marker='o')
-    plt.title('Singular Values Distribution')
-    plt.xlabel('Index')
-    plt.ylabel('Singular Value')
-    plt.yscale('log')  # 采用对数坐标
-    plt.show()
-
-
 def calculate_positions(filepath):
     global deleted_rows, deleted_cols
     A = create_adjacency_matrix(filepath)
     print(A.shape)
-    A, deleted_rows, deleted_cols = matrixOptimization(A, 1)
+    A, deleted_rows, deleted_cols = matrixOptimization(A, 3)# 筛选转发次数
     print(A.shape)
 
     P = normalize_matrix(A)
@@ -404,29 +266,15 @@ def calculate_positions(filepath):
     print(f'S共有{num_zero_rows}个全0行及{num_zero_columns}个全0列')
 
     U0, sigma, V = perform_svd(S)
-
-    print('------------------------------------------------------')
-    print('U0:',U0)
-    print(U0.shape)
-    print('------------------------------------------------------')
-    print('sigma:', sigma)
-    print(sigma.shape)
-
-    print('------------------------------------------------------')
-    print('V:', V)
-    print(V.shape)
-
     if U0[0][0] > 0:
         U0 = -U0
     r = np.sum(P, axis=1)
-    print('r:', r)
     user_positions = infer_user_positions(U0, r)
-    print("user_positions:",user_positions)
     influencer_positions = infer_influencer_positions(A, user_positions)
 
-    # print(f'奇异值分解结果:\n{U0}\n{sigma}\n{V}')
-    print("User Positions (Standardized):\n", user_positions)
-    print("Influencer Positions (Median of Retweeter Positions):\n", influencer_positions)
+    # print(f'奇异值分解结果:/n{U0}/n{sigma}/n{V}')
+    print("User Positions (Standardized):/n", user_positions)
+    print("Influencer Positions (Median of Retweeter Positions):/n", influencer_positions)
     print(f'check: {len(user_positions)} = {len(Users)} - {len(deleted_rows)} = {len(Users) - len(deleted_rows)}')
     print(f'check: {len(influencer_positions)} = {len(Influencers)} - {len(deleted_cols)} = {len(Influencers) - len(deleted_cols)}')
     return user_positions, influencer_positions
@@ -464,7 +312,7 @@ def save_scores_to_csv(user_positions, influencer_positions, output_user_csv, ou
 
 
 def main():
-    directory = r'F:\Intermediate Results\Simplyfied Forwarding relationship\Simplyfied Forwarding relationship_Politician\twitter_url'
+    directory = r'F:/Intermediate Results/Simplyfied Forwarding relationship/Simplyfied Forwarding relationship_Politician/twitter_url'
     for i in range(2019, 2022):
         year = str(i)
         for j in range(1, 13):
@@ -477,11 +325,11 @@ def main():
             # print(filename)
             filepath = os.path.join(directory, filename)
             print(filepath)
-            # debug(filepath)
+            # calculate_positions(filepath, year, month)
             user_positions, influencer_positions = calculate_positions(filepath)
-            graph_user_position(user_positions, 'Bias', 'Score', 'number', rf"F:\Experimental Results\Matrix Decomposition Results\politician_results\twitter_url_politicians_and_users_bias_results_graph\{filename.split('.')[0]}_user.png")
-            graph_influencer_position(influencer_positions, 'Bias', 'Score', 'number', rf"F:\Experimental Results\Matrix Decomposition Results\politician_results\twitter_url_politicians_and_users_bias_results_graph\{filename.split('.')[0]}_influencer.png")
-            save_scores_to_csv(user_positions, influencer_positions, rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\twitter_url\{filename.split('.')[0]}_user.csv", rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\twitter_url\{filename.split('.')[0]}_influencer.csv")
+            graph_user_position(user_positions, 'Bias', 'Score', 'number', f"F:/Experimental Results/Matrix Decomposition Results/politician_results/twitter_url_politicians_and_users_bias_results_graph/{filename.split('.')[0]}_user.png")
+            graph_influencer_position(influencer_positions, 'Bias', 'Score', 'number', f"F:/Experimental Results/Matrix Decomposition Results/politician_results/twitter_url_politicians_and_users_bias_results_graph/{filename.split('.')[0]}_influencer.png")
+            save_scores_to_csv(user_positions, influencer_positions, f"F:/Experimental Results/Matrix Decomposition Results/politician_results/twitter_url_politicians_and_users_bias_results_graph/{filename.split('.')[0]}_user.csv", f"F:/Experimental Results/Matrix Decomposition Results/politician_results/twitter_url_politicians_and_users_bias_results_graph/{filename.split('.')[0]}_influencer.csv")
             # return
 
 

@@ -153,7 +153,7 @@ def colmul(c, A):
 def perform_svd(S):
     # Step 1: 计算 S^T S
     STS = np.dot(S.T, S)
-
+    print(f'S.T times S:{STS}')
     # Step 2: 对 S^T S 进行特征值分解
     eigenvalues, V = np.linalg.eig(STS)
     # print(V)
@@ -177,8 +177,12 @@ def perform_svd(S):
 def infer_user_positions(U0, r):
     # 用户位置由标准化的第一个主成分决定
     user_positions = rowmul(r, U0)
+    print(f'r:{r}')
+    print(f'U0:\n{U0}')
+    print(f'未标准化过的用户分数\n{user_positions}')
     # 标准化用户位置
     user_positions_standardized = (user_positions - np.mean(user_positions)) / np.std(user_positions)
+    print(f'标准化后的用户分数\n{user_positions_standardized}')
     return user_positions_standardized
 
 
@@ -212,7 +216,7 @@ def graph_user_position(data_users, title, xlabel, ylabel, filename):
     plt.ylabel(ylabel)
     plt.xlim(-2, 2)
     plt.legend()
-    plt.savefig(filename)
+    # plt.savefig(filename)
     plt.show()
 
 
@@ -230,25 +234,8 @@ def graph_influencer_position(data_influencers, title, xlabel, ylabel, filename)
     plt.ylabel(ylabel)
     plt.xlim(-2, 2)
     plt.legend()
-    plt.savefig(filename)
+    # plt.savefig(filename)
     plt.show()
-
-
-def check_matrix_validity(matrix):
-    if np.any(np.isnan(matrix)):
-        print("Matrix contains NaN values")
-    if np.any(np.isinf(matrix)):
-        print("Matrix contains Inf values")
-
-
-def count_zero_rows_and_columns(matrix):
-    # 计算全零的行数
-    zero_rows = np.sum(matrix, axis=1) == 0
-    num_zero_rows = np.sum(zero_rows)
-    # 计算全零的列数
-    zero_columns = np.sum(matrix, axis=0) == 0
-    num_zero_columns = np.sum(zero_columns)
-    return num_zero_rows, num_zero_columns
 
 
 def check_matrix_validity(matrix):
@@ -374,8 +361,8 @@ def calculate_positions(filepath):
     global deleted_rows, deleted_cols
     A = create_adjacency_matrix(filepath)
     print(A.shape)
+    # 部分月份需修改matrixOptimization的benchmark
     A, deleted_rows, deleted_cols = matrixOptimization(A, 3)
-    # A, deleted_rows2, deleted_cols2 = matrixOptimization(A, 3)
     print(A.shape)
     forwardingCount(A, 0)
     forwardingCount(A, 1)
@@ -449,7 +436,7 @@ def main():
             if j > 2 and i == 2021:
                 continue
             month = str(j).zfill(2)
-            filename = f"output_{'2020'}_{'03'}.csv"
+            filename = f"output_{year}_{month}.csv"
             # print(filename)
             filepath = os.path.join(directory, filename)
             print(filepath)
@@ -461,7 +448,7 @@ def main():
             print(sorted_inf)
             graph_user_position(user_positions, 'Bias', 'Score', 'number', f"F:\Experimental Results\Matrix Decomposition Results\politician_results\without_url_politicians_and_users_bias_results_graph\{filename.split('.')[0]}_user.png")
             graph_influencer_position(influencer_positions, 'Bias', 'Score', 'number', f"F:\Experimental Results\Matrix Decomposition Results\politician_results\without_url_politicians_and_users_bias_results_graph\{filename.split('.')[0]}_influencer.png")
-            save_scores_to_csv(user_positions, influencer_positions, rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\without_url\{filename.split('.')[0]}_user.csv", rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\without_url\{filename.split('.')[0]}_influencer.csv")
+            # save_scores_to_csv(user_positions, influencer_positions, rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\without_url\{filename.split('.')[0]}_user.csv", rf"F:\Intermediate Results\Matrix Decomposition Results\politician_results\without_url\{filename.split('.')[0]}_influencer.csv")
             return
 
 
